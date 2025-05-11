@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}Treinos{% endblock %}
+{% block content %}
+<div class="container py-4"></div>
+    <h2 class="mb-4">Cadastrar Treino</h2>
+    <form method="POST" action="/treinos" class="row g-3">
+        <div class="col-md-6">
+            <label for="aluno_id" class="form-label">Aluno:</label>
+            <select class="form-select" id="aluno_id" name="aluno_id" required>
+                <option value="">Selecione um aluno</option>
+                {% for aluno in alunos %}
+                    <option value="{{ aluno[0] }}">{{ aluno[1] }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="col-md-6">
+            <label for="treinador_id" class="form-label">Treinador:</label>
+            <select class="form-select" id="treinador_id" name="treinador_id" required>
+                <option value="">Selecione um treinador</option>
+                {% for treinador in treinadores %}
+                    <option value="{{ treinador[0] }}">{{ treinador[1] }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="col-md-6">
+            <label for="descricao" class="form-label">Descrição do Treino:</label>
+            <input type="text" class="form-control" id="descricao" name="descricao" required>
+        </div>
+
+        <div class="col-md-6">
+            <label for="data_treino" class="form-label">Data do Treino:</label>
+            <input type="date" class="form-control" id="data_treino" name="data_treino" required>
+        </div>
+
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Cadastrar Treino</button>
+        </div>
+    </form>
+
+    <hr class="my-4">
+
+    <h2>Lista de Treinos</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Aluno</th>
+                <th>Treinador</th>
+                <th>Descrição</th>
+                <th>Data</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for treino in treinos %}
+            <tr>
+                <td>{{ treino[1] }}</td>
+                <td>{{ treino[2] }}</td>
+                <td>{{ treino[3] }}</td>
+                <td>{{ treino[4] }}</td>
+            </tr>
+         {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

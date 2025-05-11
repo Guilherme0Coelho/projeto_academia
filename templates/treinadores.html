@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Treinadores{% endblock %}
+{% block content %}
+<h1 class="mb-4">Cadastro de Treinadores</h1>
+
+<form method="POST" action="/treinadores" class="row g-3">
+    <div class="col-md-6">
+        <label for="nome" class="form-label">Nome:</label>
+        <input type="text" class="form-control" id="nome" name="nome" required>
+    </div>
+    <div class="col-md-6">
+        <label for="especialidade" class="form-label">Especialidade:</label>
+        <input type="text" class="form-control" id="especialidade" name="especialidade">
+    </div>
+    <div class="col-12">
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+    </div>
+</form>
+
+<hr class="my-4">
+
+<h2>Lista de Treinadores</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Especialidade</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for treinador in treinadores %}
+        <tr>
+            <td>{{ treinador['id'] }}</td>
+            <td>{{ treinador['nome'] }}</td>
+            <td>{{ treinador['especialidade'] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
